@@ -9,6 +9,15 @@ defmodule LotteryWeb.Router do
     pipe_through :api
   end
 
+  scope "/api", LotteryWeb do
+    pipe_through [:api]
+
+    post "/register", UserController, :create
+    post "/raffles", RaffleController, :create
+    post "/subscribe-raffle", SubscriberController, :create
+    get "/winner/:id", RaffleWinnerController, :show
+  end
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
@@ -23,18 +32,6 @@ defmodule LotteryWeb.Router do
       pipe_through [:fetch_session, :protect_from_forgery]
 
       live_dashboard "/dashboard", metrics: LotteryWeb.Telemetry
-    end
-  end
-
-  # Enables the Swoosh mailbox preview in development.
-  #
-  # Note that preview only shows emails that were sent by the same
-  # node running the Phoenix server.
-  if Mix.env() == :dev do
-    scope "/dev" do
-      pipe_through [:fetch_session, :protect_from_forgery]
-
-      forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
 end
