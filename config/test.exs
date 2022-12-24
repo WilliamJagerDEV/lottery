@@ -20,9 +20,6 @@ config :lottery, LotteryWeb.Endpoint,
   secret_key_base: "7mGx3wPrfAEyQ8EqyJ93XVg2cVKMw9Y3JSdAOmbAYw6MGYEXys9BhibRJg81FqpM",
   server: false
 
-# In test we don't send emails.
-config :lottery, Lottery.Mailer, adapter: Swoosh.Adapters.Test
-
 # Print only warnings and errors during test
 config :logger, level: :warn
 
