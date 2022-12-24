@@ -27,3 +27,7 @@ lottery-*.tar
 /.nix-hex/
 /.nix-mix/
 /.postgres/
+
+# local execution
+/.env
+/config/*.secret.exs

@@ -1,0 +1,66 @@
+version: "3.8"
+
+services:
+  lottery:
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      target: build
+      args:
+        MIX_ENV: dev
+    container_name: lottery
+    command: iex -S mix phx.server
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/app
+      - lottery_build:/app/_build/
+      - lottery_deps:/app/deps
+    depends_on:
+      - db
+    networks:
+      - lottery
+    env_file:
+      - .env
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "10"
+
+  db:
+    image: postgres:13.5
+    container_name: lottery_db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postegres
+      POSTGRES_DB: lottery_dev
+    ports:
+      - "5432:5432"
+    restart: always
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - lottery
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "10"
+
+networks:
+  lottery:
+    name: lottery
+
+volumes:
+  lottery_build:
+  lottery_deps:
