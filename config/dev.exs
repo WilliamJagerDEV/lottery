@@ -4,7 +4,7 @@ import Config
 config :lottery, Lottery.Repo,
   username: "postgres",
   password: "postgres",
-  hostname: "localhost",
+  hostname: "db",
   database: "lottery_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
@@ -79,3 +79,5 @@ config :git_hooks,
       ]
     ]
   ]
+
+if File.exists?("config/dev.secret.exs"), do: import_config("dev.secret.exs")
