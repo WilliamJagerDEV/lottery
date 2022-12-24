@@ -10,7 +10,10 @@ defmodule Lottery.MixProject do
       compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [
+        tool: ExCoveralls
+      ]
     ]
   end
 
@@ -38,13 +41,19 @@ defmodule Lottery.MixProject do
       {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_live_dashboard, "~> 0.6"},
-      {:swoosh, "~> 1.3"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
+      # Tests and consistency
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
+      {:excoveralls, "~> 0.14 and >= 0.14.4", only: [:test]},
+      {:ex_doc, "~> 0.27.3", only: [:dev], runtime: false},
+      {:ex_machina, "~> 2.7.0", only: :test},
+      {:faker, "~> 0.17.0"},
+      {:git_hooks, ">= 0.0.0", only: [:dev, :test]}
     ]
   end
 
