@@ -24,7 +24,7 @@ defmodule LotteryWeb.SubscriberController do
     |> do_validate_date()
   end
 
-  defp do_validate_date(diff) when diff < 0, do: :valid
+  defp do_validate_date(diff) when diff <= 0, do: :valid
 
   defp do_validate_date(_diff), do: {:error, :expired_period_to_subscribe}
 end
