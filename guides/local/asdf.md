@@ -26,7 +26,7 @@ Como a opção padrão para executar o projeto é com `Docker`, é necessário c
 ```elixir
 import Config
 
-config :communication, Lottery.Repo,
+config :lottery, Lottery.Repo,
   hostname: "localhost"
 ```
 

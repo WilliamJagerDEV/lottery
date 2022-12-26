@@ -100,14 +100,6 @@ defmodule Lottery.ExternalApiTest do
 end
 ```
 
-## Mox
-
-Em alguns casos será necessário criar mocks de APIs externas, para isso usamos a lib [Mox](https://github.com/dashbitco/mox)
-
-Para mais informações, leia o `README` da biblioteca: https://github.com/dashbitco/mox
-
-Além do exemplo implementado no [Hex](https://github.com/hexpm/hexpm/blob/main/test/hexpm_web/controllers/api/organization_controller_test.exs)
-
 ## Referências
 
 - https://dashbit.co/blog/mocks-and-explicit-contracts
