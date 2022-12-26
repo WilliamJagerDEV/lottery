@@ -1,0 +1,18 @@
+{
+    "skip_files": [
+        "lib/lottery.ex",
+        "lib/lottery/release.ex",
+        "lib/lottery/repo.ex",
+        "lib/lottery_web.ex",
+        "lib/lottery_web/endpoint.ex",
+        "lib/lottery_web/gettext.ex",
+        "lib/lottery_web/views/registration_view.",
+        "test/support/data_case.ex",
+        "test/support/factories/raffle_factory.ex",
+        "test/support/factories/user_factory.ex",
+        "test/support/factory.ex",
+        "test/support/fixtures/account_fixtures.e",
+        "test/support/fixtures/accounts_fixtures.",
+        "test/support/fixtures/events_fixtures.ex"
+    ]
+}
