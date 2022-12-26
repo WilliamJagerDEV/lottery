@@ -7,15 +7,13 @@ defmodule LotteryWeb.SubscriberController do
   action_fallback LotteryWeb.FallbackController
 
   def create(conn, %{"subscribe" => %{"raffle_id" => raffle_id} = params}) do
-    with %Raffle{raffle_date: raffle_date} <- Events.get_raffle!(raffle_id),
+    with %Raffle{raffle_date: raffle_date} <- Events.get_raffle(raffle_id),
          :valid <- validate_date(raffle_date),
          {:ok, %UsersToRaffle{} = _users_to_raffle} <- Events.create_users_to_raffle(params) do
       conn
       |> put_status(:created)
       |> send_resp(200, "ok")
     end
-  rescue
-    _e in Ecto.NoResultsError -> {:error, :not_exists}
   end
 
   defp validate_date(raffle_date) do

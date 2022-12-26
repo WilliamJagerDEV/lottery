@@ -24,6 +24,15 @@ defmodule Lottery.Events do
   """
   def get_raffle!(id), do: Repo.get!(Raffle, id)
 
+  def get_raffle(id) do
+    Raffle
+    |> Repo.get(id)
+    |> case do
+      nil -> {:error, :not_exists}
+      raffle -> raffle
+    end
+  end
+
   @doc """
   Creates a users_to_raffle.
 
