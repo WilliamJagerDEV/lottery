@@ -1,0 +1,43 @@
+#########################################
+########## Cadastro de Usuário ##########
+POST /api/register HTTP/1.1
+Host: localhost:4000
+Content-Type: application/json
+
+{
+    "user": {
+        "email": "williamjager.dev@gmail.com",
+        "name": "William Jäger"
+    }
+}
+
+#########################################
+########## Cadastro de Sorteio ##########
+POST /api/raffles HTTP/1.1
+Host: localhost:4000
+Content-Type: application/json
+
+{
+    "raffle": {
+        "name": "Loto Elixir",
+        "date": "2022-12-27"
+    }
+}
+
+#########################################
+########## Cadastro no Sorteio ##########
+POST /api/subscribe-raffle HTTP/1.1
+Host: localhost:4000
+Content-Type: application/json
+
+{
+    "subscribe": {
+        "user_id": "308af72d-fd2a-484d-9f58-616b021fd104",
+        "raffle_id": "6d28bd0d-f210-4f9d-af73-247e0bca9e2e"
+    }
+}
+
+########################################
+########## Consultar Vencedor ##########
+GET /api/winner/6d28bd0d-f210-4f9d-af73-247e0bca9e2e HTTP/1.1
+Host: localhost:4000
