@@ -19,8 +19,8 @@ Content-Type: application/json
 
 {
     "raffle": {
-        "name": "Loto Elixir",
-        "date": "2022-12-27"
+        "name": "Loto Elixir 2",
+        "date": "2022-12-26"
     }
 }
 
@@ -32,12 +32,12 @@ Content-Type: application/json
 
 {
     "subscribe": {
-        "user_id": "308af72d-fd2a-484d-9f58-616b021fd104",
-        "raffle_id": "6d28bd0d-f210-4f9d-af73-247e0bca9e2e"
+        "user_id": "64ead584-c15b-4b2a-a65a-ed3fbcd1210b",
+        "raffle_id": "dc053560-dd54-4993-84b8-78fb3ed3bc85"
     }
 }
 
 ########################################
 ########## Consultar Vencedor ##########
-GET /api/winner/6d28bd0d-f210-4f9d-af73-247e0bca9e2e HTTP/1.1
+GET /api/winner/dc053560-dd54-4993-84b8-78fb3ed3bc85 HTTP/1.1
 Host: localhost:4000
